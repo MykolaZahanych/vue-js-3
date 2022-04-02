@@ -3,14 +3,19 @@
     <div class="column">
       <div class="field">
         <div class="label">New Post</div>
-        <input v-model="title" type="text" class="input" />
+        <input data-test="title" v-model="title" type="text" class="input" />
       </div>
     </div>
   </div>
 
   <div class="columns">
     <div class="column">
-      <div contenteditable ref="contentEditable" @input="handleInput" />
+      <div
+        contenteditable
+        data-test="content"
+        ref="contentEditable"
+        @input="handleInput"
+      />
     </div>
     <div class="column">
       <div v-html="html" />
@@ -19,7 +24,11 @@
 
   <div class="columns">
     <div class="column">
-      <button @click="save" class="button is-primary is-pulled-right">
+      <button
+        @click="save"
+        data-test="submit"
+        class="button is-primary is-pulled-right"
+      >
         Submit
       </button>
     </div>
