@@ -1,6 +1,6 @@
 import { reactive, readonly } from 'vue';
 import axios from 'axios';
-import { Post, today, thisWeek, thisMonth } from './mocks';
+import { Post } from './mocks';
 
 interface State {
   posts: PostsState;
