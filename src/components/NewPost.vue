@@ -7,6 +7,8 @@ import { Post } from '../mocks';
 import { defineComponent } from 'vue';
 import PostWriter from './PostWriter.vue';
 import moment from 'moment';
+import { useStore } from '../store';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   components: { PostWriter },
@@ -14,11 +16,15 @@ export default defineComponent({
     const newPost: Post = {
       id: '-1',
       title: 'New post',
-      created: moment(),
+      created: moment().subtract(1, 'second'),
     };
 
-    const save = (post: Post) => {
-      console.log('save emit', post);
+    const store = useStore();
+    const router = useRouter();
+
+    const save = async (post: Post) => {
+      await store.createPost(post);
+      router.push('/');
     };
 
     return { newPost, save };

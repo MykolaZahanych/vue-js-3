@@ -19,7 +19,6 @@ describe('PostWriter', () => {
       await wrapper.find('[data-test="submit"]').trigger('click');
 
       const emitted = (wrapper.emitted()['save'] as any)[0][0];
-      console.log(emitted);
       expect(emitted.title).toBe('My new title');
       expect(emitted.markdown).toBe('## New content');
       expect(emitted.html).toBe('<h2 id="new-content">New content</h2>\n');
