@@ -2,6 +2,12 @@ import { reactive, readonly } from 'vue';
 import axios from 'axios';
 import { Post } from './mocks';
 
+export interface User {
+  id: string;
+  username: string;
+  password: string;
+}
+
 interface State {
   posts: PostsState;
 }
@@ -33,6 +39,10 @@ class Store {
     const response = await axios.post<Post>('/posts', post);
     this.state.posts.all.set(post.id, response.data);
     this.state.posts.ids.push(post.id);
+  }
+
+  async createUser(user: User) {
+    console.log('user', user);
   }
 
   async fetchPosts() {

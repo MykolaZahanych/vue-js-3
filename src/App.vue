@@ -16,16 +16,16 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, StyleValue } from 'vue';
+import { computed, defineComponent } from 'vue';
 import NavBar from './components/NavBar.vue';
+import FormInput from './components/FormInput.vue';
 import { useModal } from './useModal';
 
 export default defineComponent({
   name: 'App',
-  components: { NavBar },
+  components: { NavBar, FormInput },
   setup() {
     const modal = useModal();
-
     const style = computed(() => {
       return {
         display: modal.show.value ? 'block' : 'none',
