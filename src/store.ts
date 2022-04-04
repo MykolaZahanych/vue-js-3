@@ -23,7 +23,7 @@ interface PostsState {
   loaded: boolean;
 }
 
-class Store {
+export class Store {
   private state: State;
 
   constructor(initial: State) {
