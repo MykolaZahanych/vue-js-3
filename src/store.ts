@@ -51,8 +51,8 @@ export class Store {
   // }
   async createPost(post: Post) {
     const response = await axios.post<Post>('/posts', post);
-    this.state.posts.all.set(post.id, response.data);
-    this.state.posts.ids.push(post.id);
+    this.state.posts.all.set(response.data.id, response.data);
+    this.state.posts.ids.push(response.data.id);
   }
 
   async createUser(user: User) {
