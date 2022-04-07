@@ -11,6 +11,12 @@ describe('Navbar', () => {
         ids: [],
         loaded: false,
       },
+      authors: {
+        ids: [],
+        all: new Map(),
+        loaded: false,
+        currentUserId: undefined,
+      },
     });
 
     const el = document.createElement('div');
@@ -29,6 +35,7 @@ describe('Navbar', () => {
       },
     });
 
+    await wrapper.get('[data-test="sign-up"]').trigger('click');
     const form = wrapper.getComponent(Signup);
     expect(document.body.outerHTML).toContain(
       'This value must be between 10 and 40'
