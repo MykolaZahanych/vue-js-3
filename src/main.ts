@@ -29,6 +29,7 @@ axios.post = async (url: string, payload: any) => {
     const id = random(100, 10000);
     await delay();
     const post: Post = {
+      ...payload,
       id: id.toString(),
       title: payload.title,
       created: payload.created,
@@ -48,6 +49,22 @@ axios.post = async (url: string, payload: any) => {
 
     return Promise.resolve({
       data: author,
+    });
+  }
+};
+
+//@ts-ignore
+axios.put = async (url: string, payload: any) => {
+  if (url === '/posts') {
+    await delay();
+    const post: Post = {
+      ...payload,
+      title: payload.title,
+      created: payload.created,
+      authorId: payload.authorId,
+    };
+    return Promise.resolve<{ data: Post }>({
+      data: post,
     });
   }
 };

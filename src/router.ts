@@ -7,7 +7,9 @@ import EditPost from './components/EditPost.vue';
 
 export function routerWithStore(store: Store) {
   const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory(
+      process.env.NODE_ENV === 'production' ? '/path' : undefined
+    ),
     routes: [
       { path: '/', component: Home },
       { path: '/posts/:id', component: ShowPost },

@@ -58,7 +58,7 @@ export default defineComponent({
 
   setup(props, ctx) {
     const title = ref(props.post.title);
-    const content = ref('## Title\nEnter your post content');
+    const content = ref(props.post.markdown || '');
     const html = ref('');
     const contentEditable = ref<HTMLDivElement | null>(null);
 
